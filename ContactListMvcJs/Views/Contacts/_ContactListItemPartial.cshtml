@@ -1,0 +1,20 @@
+@model ContactListMvcJs.Controllers.Contact
+
+<li>
+    <span>@Model.Name</span>
+    <span>@Model.Email</span>
+    <span>
+        <button class="btn-delete-contact" id="delete-@Model.Id">
+            <input type="hidden" name="id" value="@Model.Id"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-trash">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6l-2 14H7L5 6"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+            </svg>
+        </button>
+    </span>
+</li>

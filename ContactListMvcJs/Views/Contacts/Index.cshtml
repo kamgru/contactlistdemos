@@ -1,0 +1,103 @@
+@using ContactListMvcJs.Controllers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ContactListMvcJs.Controllers.ContactsListViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>app</title>
+    <meta charset="utf-8"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .contact-list {
+            list-style: none;
+            li {
+                display: flex;
+                span {
+                    padding: 0.2rem 1rem;
+                }
+                svg {
+                    width: 24px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        form {
+            div {
+                padding: 0.4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h2>Contact list</h2>
+
+<ul class="contact-list">
+    @foreach (Contact contact in Model.Contacts)
+    {
+        <partial name="_ContactListItemPartial" model="contact"/>
+    }
+</ul>
+
+@if (Model.Errors.Any())
+{
+    <div>
+        @foreach (string error in Model.Errors)
+        {
+            <span>@error</span>
+            <br/>
+        }
+    </div>
+}
+
+<form method="POST" action="/contacts/add">
+    <div>
+        <label>Name</label>
+        <input type="text" name="Name" value="@Model.Form.Name" placeholder="Name"/>
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input type="email" name="Email" value="@Model.Form.Email" placeholder="Email"/>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    $(function () {
+        $('.btn-delete-contact').click(function () {
+            const btn = $(this);
+            const id = btn.attr('id').split('-')[1];
+            $.ajax({
+                url: `/contacts/${id}`,
+                method: 'DELETE',
+                success: function () {
+                    btn.parent().parent().remove()
+                }
+            });
+        })
+
+        $('form').submit(function (e) {
+            e.preventDefault()
+            $.ajax({
+                url: `/Contacts/Add/`,
+                method: 'POST',
+                data: {
+                    name: $('input[name="Name"]').val(),
+                    email: $('input[name="Email"]').val(),
+                },
+                success: function (e) {
+                    $('form input').val('');
+                    $('.contact-list').append(e);
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>
