@@ -1,0 +1,79 @@
+@model ContactListAngularJs.Controllers.ContactsListViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en" ng-app="contactListApp">
+<head>
+    <title>app</title>
+    <meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <style>
+        .contact-list {
+            list-style: none;
+            li {
+                display: flex;
+                span {
+                    padding: 0.2rem 1rem;
+                }
+                svg {
+                    width: 24px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        form {
+            div {
+                padding: 0.4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body ng-controller="ContactsController">
+
+<h2>Contact list</h2>
+
+<ul class="contact-list">
+    <li ng-repeat="contact in contacts">
+        <span>{{contact.name}}</span>
+        <span>{{contact.email}}</span>
+        <span>
+            <button class="btn-delete-contact" id="delete-{{contact.id}}" ng-click="deleteContact(contact)">
+                <input type="hidden" name="id" value="{{contact.id}}"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-trash">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6l-2 14H7L5 6"></path>
+                    <path d="M10 11v6"></path>
+                    <path d="M14 11v6"></path>
+                    <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+                </svg>
+            </button>
+        </span>
+    </li>
+</ul>
+
+<div ng-if="showErrors">
+    <span>{{error}}</span>
+</div>
+
+<form ng-submit="submitForm()" name="form">
+    <div>
+        <label>Name</label>
+        <input type="text" ng-model="contact.name" placeholder="Name"/>
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input type="email" ng-model="contact.email" placeholder="Email"/>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+</script>
+</body>
+</html>

@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactList", "ContactListM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactListMvcJs", "ContactListMvcJs\ContactListMvcJs.csproj", "{5CE19943-BD00-4ED8-BC44-0450E90B3240}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactListAngularJs", "ContactListAngularJs\ContactListAngularJs.csproj", "{5EC2E1CD-C598-4EE5-AADE-2E5DEEF78426}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,5 +25,9 @@ Global
 		{5CE19943-BD00-4ED8-BC44-0450E90B3240}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CE19943-BD00-4ED8-BC44-0450E90B3240}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CE19943-BD00-4ED8-BC44-0450E90B3240}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC2E1CD-C598-4EE5-AADE-2E5DEEF78426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC2E1CD-C598-4EE5-AADE-2E5DEEF78426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC2E1CD-C598-4EE5-AADE-2E5DEEF78426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC2E1CD-C598-4EE5-AADE-2E5DEEF78426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
